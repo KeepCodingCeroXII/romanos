@@ -12,12 +12,5 @@ f) 4.5 -> RomanNumberError("Debe ser un entero")
 
 """
 
-def test_3_es_igual_a_2_mas_uno():
-    assert 2 + 1 == 3 
-
-
-def test_valor_1994():
-    assert entero_a_romano(1994) == 'MCMXCIV' 
-
-def test_valor_1995():
-    assert entero_a_romano(1995) == 'MCMXCV' 
+def test_descomposicion_336():
+    assert entero_a_romano(336) == ['0000', '300', '30', '6'] #=> 'CCCXXXVI'
