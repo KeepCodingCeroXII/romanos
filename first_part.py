@@ -8,9 +8,17 @@
 class RomanNumberError(Exception):
     pass
 
-numero_romano = (
-    (1000, 'M'), (500, 'D'), (100, 'C'), (50, 'D'), (10, 'X'), (5, 'V'), (1, 'I')
+numero_romano = {
+    1000: 'M', 500: 'D', 100: 'C', 50: 'D', 10: 'X', 5: 'V', 1: 'I'
+}
+
+algoritmo_romano = (
+    {1: 'M'},
+    {1: 'C', 5: 'D', 10: 'M'},
+    {1: 'X', 5: 'L', 10: 'C'},
+    {1: 'I', 5: 'V', 10: 'X'},
 )
+
 
 componentes = {
     1000: 'M', 2000: 'MM', 3000: 'MMM', 
@@ -26,6 +34,27 @@ componentes = {
 }    
 
 
+def entero_a_romano_2(numero):
+    numero = "{:0>4d}".format(numero)
+    digitos = list(numero)
+
+    romano = ''
+
+    for tipo_unidad, digito in enumerate(digitos):
+        digito = int(digito)
+        tupla_activa = algoritmo_romano[tipo_unidad]
+
+        if digito < 4:
+            romano += tupla_activa[1] * digito
+        elif digito == 4:
+            romano += tupla_activa[1] + tupla_activa[5]
+        elif int(digitos[1]) < 9:
+            romano += tupla_activa[5] + tupla_activa[1] * (digito - 5)
+        else:
+            romano += tupla_activa[1] + tupla_activa[10]
+
+    return romano
+
 
 def entero_a_romano(numero):
     """
@@ -38,15 +67,14 @@ def entero_a_romano(numero):
     numero = "{:0>4d}".format(numero)
     digitos = list(numero)
 
-    ix = 0
     longitud = len(digitos)
-    romano = ""
-    for n in numero:
+    romano = ''
+    for ix in range(len(numero)):
         longitud -= 1
         digitos[ix] = digitos[ix] + "0" * longitud
         romano += componentes.get(int(digitos[ix]), "")
-        ix += 1
 
     return romano
+
 
 entero_a_romano(336)

@@ -1,4 +1,4 @@
-from first_part import entero_a_romano
+from first_part import entero_a_romano, entero_a_romano_2
 
 """
 Casos de prueba 
@@ -17,3 +17,9 @@ def test_descomposicion_1336():
 
 def test_descomposicion_336():
     assert entero_a_romano(336) == 'CCCXXXVI'
+
+def test_descomposicion_1336_():
+    assert entero_a_romano_2(1336) == 'MCCCXXXVI'
+
+def test_descomposicion_336_():
+    assert entero_a_romano_2(336) == 'CCCXXXVI'
