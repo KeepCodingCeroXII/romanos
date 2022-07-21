@@ -1,4 +1,4 @@
-from first_part import entero_a_romano, entero_a_romano_2
+from romanos_funcional import entero_a_romano, romano_a_entero
 
 """
 Casos de prueba 
@@ -12,14 +12,12 @@ f) 4.5 -> RomanNumberError("Debe ser un entero")
 
 """
 
-def test_descomposicion_1336():
+def test_1336():
     assert entero_a_romano(1336) == 'MCCCXXXVI'
 
-def test_descomposicion_336():
+def test_336(): 
     assert entero_a_romano(336) == 'CCCXXXVI'
 
-def test_descomposicion_1336_():
-    assert entero_a_romano_2(1336) == 'MCCCXXXVI'
-
-def test_descomposicion_336_():
-    assert entero_a_romano_2(336) == 'CCCXXXVI'
+def test_romano_a_entero_ordenados():
+    assert romano_a_entero('I') == 1
+    assert romano_a_entero('MDCCXIII') == 1713
